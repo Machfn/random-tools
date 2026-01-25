@@ -21,7 +21,7 @@
 section .data
 	tM db "Test"
 	lenT equ $-tM
-	succMsg db "Succesfully wrote to file"
+	succMsg db "Successfully wrote to file"
 	lenSucc equ $-succMsg
 	errMsg db "Not enough arguments given", 0xA
 	lenErr equ $-errMsg
