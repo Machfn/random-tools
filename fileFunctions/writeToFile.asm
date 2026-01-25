@@ -57,18 +57,10 @@ getlen:
 	cmp byte [ecx + edx], 0
 	jne getlen
 	pop ecx
-	
-	;mov eax, 4
-	;mov ebx, 1
+
 	; len already in edx, arg in ecx
-	;int 0x80
 	mov [fileName], ecx
 	mov [fLen], edx
-	
-	; push both length and arg back onto stack
-	;push edx
-	;push ecx
-	
 	
 	;pop ecx
 	mov ecx, [esp + 12]
