@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# SETUP SCRIPT to compile functions to ~/bin directory, you will need to add ~/bin to path
+# usage:
+# 	./setup.sh def -> runs default setup
+
+
+
 ac="nasm"
 pc="g++"
 cc="gcc"
@@ -9,6 +15,7 @@ grn="\e[32m"
 red="\e[31m"
 createbin=$(mkdir ~/bin)
 cbc=$(g++ ./binaryConverter/main.cpp -o ~/bin/binary -lm)
+cwt=$(cd fileFunctions; ./compile.sh writeToFile)
 command_exists() {
 	command -v "$1" > /dev/null 2>&1
 }
@@ -38,12 +45,17 @@ then
 	if [ -d "~/bin" ]; then
 		echo -e "\t ${grn}~/bin already exists ${rst}"
 	else
-		$createbin || echo -e "\t ${red} Failed to create bin folder (might already exist) ${rst}"
+		$createbin || echo -e "\t ${red}Failed to create bin folder (might already exist) ${rst}"
 	fi
 	if $cbc; then
-		echo -e "\t ${grn} Succesfully compiled binary converter ${rst}"
+		echo -e "\t ${grn}Succesfully compiled binary converter ${rst}"
 	else
-		$cbc || echo -e "\t ${red} Failed to compile to bin ${rst}"
+		$cbc || echo -e "\t ${red}Failed to compile binary converter to bin ${rst}"
+	fi
+	if $cwt; then
+		echo -e "\t ${grn}Successfully compiled file writer ${rst}"
+	else
+		$cwt || echo -e "\t ${red}Failed to compile file writer to bin ${rst}"
 	fi
 	
 else
