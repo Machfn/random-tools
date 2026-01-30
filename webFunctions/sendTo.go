@@ -8,7 +8,12 @@ import (
 	"os"
 	"strings"
 )
-
+/* 
+Simple Cli tool to send JSON post requests and get request to servers for testing purposes
+Usage:
+	sendTo get [webAddress] -> prints the response from the web address (web address must be given with http:// or https://)
+	sendTo post [webAddress] [jsonPath] -> sends post data and prints the response (web address must be given with http:// or https://)
+*/
 func main() {
 	args := os.Args[1:]
 	//fmt.Println(args)
