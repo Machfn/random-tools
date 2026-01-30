@@ -9,11 +9,13 @@
 ac="nasm"
 pc="g++"
 cc="gcc"
+gc="go"
 ylw="\e[33m"
 rst="\e[0m"
 grn="\e[32m"
 red="\e[31m"
 createbin=$(mkdir ~/bin)
+cgc=$(go build -o ~/bin/sendTo ./webFunctions/sendTo.go)
 cbc=$(g++ ./binaryConverter/main.cpp -o ~/bin/binary -lm)
 cwt=$(cd fileFunctions; ./compile.sh writeToFile)
 command_exists() {
@@ -41,6 +43,12 @@ then
 		echo -e "\t ${red}gcc not installed${rst}"
 		exit 1
 	fi
+	if command_exists "$gc"; then
+		echo -e "\t ${grn}go build tool installed${rst}"
+	else
+		echo -e "\t ${red}go not installed${rst}"
+		exit 1
+	fi
 	echo -e "\033[2C${ylw}Attempting to compile${rst}"
 	if [ -d "~/bin" ]; then
 		echo -e "\t ${grn}~/bin already exists ${rst}"
@@ -56,6 +64,11 @@ then
 		echo -e "\t ${grn}Successfully compiled file writer ${rst}"
 	else
 		$cwt || echo -e "\t ${red}Failed to compile file writer to bin ${rst}"
+	fi
+	if $cgc; then
+		echo -e "\t ${grn}Successfully built sendTo function ${rst}"
+	else
+		$cgc || echo -e "\t ${red}Failed to build sendTo function to bin ${rst}"
 	fi
 	
 else
