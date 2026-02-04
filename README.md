@@ -2,7 +2,7 @@ This is a collection of random tools I made which I use somewhat often when work
 **Please run setup.sh as it will compile the files into a folder ~/bin, you will need to add this to path (optionally go into the file and change the output destination of the compilers/linkers)
 
 binaryConverter (C++)
-  - converts either unsigned or signed ints to binary representations (max 32 bits for unsigned, and 31 for signed ints)
+  - converts either unsigned or signed ints to binary representations (max 32 bits for unsigned, and 31 for signed ints)<br/>
   USAGE:<br/>
     binary u [number] -> converts an unsigned int to binary representation<br/>
     binary s [number] -> converts a signed into to binary representation (2's compilment)<br/>
