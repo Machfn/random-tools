@@ -17,7 +17,8 @@ red="\e[31m"
 createbin=$(mkdir ~/bin)
 cgc=$(go build -o ~/bin/sendTo ./webFunctions/sendTo.go)
 cbc=$(g++ ./binaryConverter/main.cpp -o ~/bin/binary -lm)
-cwt=$(cd fileFunctions; ./compile.sh writeToFile)
+cwt=$(cd fileFunctions; ./compile.sh writeTo)
+cct=$(cd fileFunctions; ./compile.sh caw)
 command_exists() {
 	command -v "$1" > /dev/null 2>&1
 }
@@ -69,6 +70,11 @@ then
 		echo -e "\t ${grn}Successfully built sendTo function ${rst}"
 	else
 		$cgc || echo -e "\t ${red}Failed to build sendTo function to bin ${rst}"
+	fi
+	if $cct; then
+		echo -e "\t ${grn}Succesfully built caw function ${rst}"
+	else
+		$cgc || echo -e "\t ${red}Failed to build caw function to bin ${rst}"
 	fi
 	
 else

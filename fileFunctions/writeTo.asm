@@ -3,6 +3,7 @@
 ; usage:
 ;	writeTo $fileName $string
 ;	writeTo example.txt "hello world"
+; Written by Ben W (Benon)
 
 
 	%macro writeString 2
