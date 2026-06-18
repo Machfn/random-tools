@@ -1,0 +1,5 @@
+for dev in /dev/ttyUSB* /dev/ttyACM*; do
+    [ -e "$dev" ] || continue
+    NAME=$(udevadm info --query=property --name=$dev | grep "ID_MODEL_FROM_DATABASE\|ID_MODEL=" | head -n1 | cut -d'=' -f2)
+    echo -e "Port: $dev \t Name: ${NAME:-Unknown Device}"
+done
